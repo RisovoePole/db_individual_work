@@ -1,18 +1,13 @@
-# MyApp
+# Auth-service
 
-To start your Phoenix server:
+To startup project:
 
-* Run `mix setup` to install and setup dependencies
-* Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+``` bash
+just docker_build
+```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Base url check
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+[http://localhost:4000/api/hello](http://localhost:4000/api/hello)
 
-## Learn more
-
-* Official website: https://www.phoenixframework.org/
-* Guides: https://hexdocs.pm/phoenix/overview.html
-* Docs: https://hexdocs.pm/phoenix
-* Forum: https://elixirforum.com/c/phoenix-forum
-* Source: https://github.com/phoenixframework/phoenix
+![working proof](./README_images/base_url_proof.png)
