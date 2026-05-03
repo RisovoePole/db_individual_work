@@ -1,0 +1,31 @@
+openapi: 3.1.0
+info:
+  title: My API
+  version: 1.0.0
+
+paths:
+  /users/{id}:
+    get:
+      operationId: getUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+  /users:
+    get:
+      operationId: getAllUser
+      responses:
+        "200":
+          description: OK
+  /hello:
+    get:
+      operationId: hello
+      responses:
+      "200":
+        description: OK
+  

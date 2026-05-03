@@ -1,0 +1,3 @@
+[submodule "priv/openapi"]
+	path = priv/openapi
+	url = git@gitlab.com:no-add/openapi.git
