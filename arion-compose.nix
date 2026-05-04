@@ -17,7 +17,10 @@
     postgres.service = {
       image = "postgres:16";
       env_file = [ "./.env" ];
-      volumes = ["postgres_data:/var/lib/postgresql/data"];
+      volumes = [
+        "postgres_data:/var/lib/postgresql/data"
+        "./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro"
+      ];
     };
 
     redis.service = {
