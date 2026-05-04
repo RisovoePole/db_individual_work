@@ -1,12 +1,28 @@
 defmodule MyAppWeb.Router do
   use MyAppWeb, :router
 
+  alias MyAppWeb.Plugs.RequireAuth
+
   pipeline :api do
     plug(:accepts, ["json"])
   end
 
+  pipeline :api_auth do
+    plug(:accepts, ["json"])
+    plug(RequireAuth)
+  end
+
   scope "/api", MyAppWeb do
     pipe_through(:api)
+
+    post "/auth/login", ApiController, :login
+  end
+
+  scope "/api", MyAppWeb do
+    pipe_through(:api_auth)
+
+    get "/hello", ApiController, :hello
+    post "/auth/logout", ApiController, :logout
   end
 
   scope "/api" do

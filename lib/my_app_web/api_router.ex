@@ -1,11 +1,14 @@
 defmodule MyAppWeb.ApiRouter do
   use Phoenix.Router
 
-  require Apical
+  pipeline :api do
+    plug(:accepts, ["json"])
+  end
 
-  Apical.router_from_file(
-    "priv/openapi/api.yaml",
-    controller: MyAppWeb.ApiController,
-    root: "/"
-  )
+  scope "/", MyAppWeb do
+    pipe_through(:api)
+
+    get("/users", ApiController, :get_all_user)
+    get("/users/:id", ApiController, :get_user)
+  end
 end
