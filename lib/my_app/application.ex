@@ -10,7 +10,8 @@ defmodule MyApp.Application do
     children = [
       MyAppWeb.Telemetry,
       MyApp.Repo,
-      MyApp.Redis, # - подключение к бд
+      # - подключение к бд
+      MyApp.Redis,
       {DNSCluster, query: Application.get_env(:my_app, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: MyApp.PubSub},
       # Start a worker by calling: MyApp.Worker.start_link(arg)

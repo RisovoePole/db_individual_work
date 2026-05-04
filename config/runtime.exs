@@ -4,8 +4,7 @@ if System.get_env("PHX_SERVER") do
   config :my_app, MyAppWeb.Endpoint, server: true
 end
 
-config :my_app, MyAppWeb.Endpoint,
-  http: [port: String.to_integer(System.get_env("PORT", "4000"))]
+config :my_app, MyAppWeb.Endpoint, http: [port: String.to_integer(System.get_env("PORT", "4000"))]
 
 if config_env() == :prod do
   database_url =
@@ -22,8 +21,7 @@ if config_env() == :prod do
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
     socket_options: maybe_ipv6
 
-  config :my_app, :redis_url,
-    System.get_env("REDIS_URL") || "redis://localhost:6379/0"
+  config :my_app, :redis_url, System.get_env("REDIS_URL") || "redis://localhost:6379/0"
 
   secret_key_base =
     System.get_env("SECRET_KEY_BASE") ||

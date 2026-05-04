@@ -7,7 +7,19 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
     beam = pkgs.beam.packages.erlang_27;
-    src = pkgs.lib.cleanSource ./.;
+    src = builtins.path {
+      name = "my_app-src";
+      path = ./.;
+      filter = path: type:
+        let
+          baseName = baseNameOf path;
+        in
+          baseName != ".git"
+          && baseName != "_build"
+          && baseName != "deps"
+          && baseName != ".direnv"
+          && baseName != ".DS_Store";
+    };
 
     mixFodDeps = beam.fetchMixDeps {
       inherit src;
