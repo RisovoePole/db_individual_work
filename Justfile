@@ -5,4 +5,5 @@ docker_build:
 
 
 init_submodules:
+    cp .env.example .env
     git submodule update --init --recursive
